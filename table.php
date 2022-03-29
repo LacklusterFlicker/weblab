@@ -1,3 +1,8 @@
+<?php
+$cols = 5;
+$rows = 5;
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -38,43 +43,25 @@
       <input type='submit' value='Создать' />
     </form>
     <!-- Таблица -->
-    <table border='1' width="200">
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>4</td>
-        <td>6</td>
-        <td>8</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>6</td>
-        <td>9</td>
-        <td>12</td>
-        <td>15</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>8</td>
-        <td>12</td>
-        <td>16</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>10</td>
-        <td>15</td>
-        <td>20</td>
-        <td>25</td>
-      </tr>
-    </table>
+    <?php
+    echo '<table width="500" border="2">';
+    for ($i = 1; $i <= $rows; $i++) {
+      if ($i == 1) {
+        echo '<tr style="text-align: center; font-weight: bold;">';
+      } else {
+        echo '<tr>';
+      }
+      for ($j = 1; $j <= $cols; $j++) {
+        if ($j == 1) {
+          echo '<td style="font-weight: bold; text-align: center;">', $i, '*', $j, '=', $i * $j, '</td>';
+        } else {
+          echo '<td>', $i, '*', $j, '=', $i * $j, '</td>';
+        }
+      }
+      echo '</tr>';
+    }
+    echo '</table>';
+    ?>
     <!-- Таблица -->
     <!-- Область основного контента -->
   </div>
