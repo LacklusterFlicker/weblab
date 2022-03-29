@@ -8,6 +8,23 @@ $leftMenu = [
   ['link' => 'Калькулятор', 'href' => 'calc.php']
 ];
 
+function drawMenu($menu, $vertical = true)
+{
+  $css = '';
+  $marg = '';
+  if (!$vertical) {
+    $css = ' style="display: flex; flex-wrap: wrap; font-size: 12px"';
+    $marg = ' style="margin: 0 10px 0 0"';
+  }
+  echo "<ul{$css}>";
+  foreach ($menu as $key) {
+    echo "<li>";
+    echo "<a{$marg} href='{$key['href']}'> {$key['link']} </a>";
+    echo "</li>";
+  }
+  echo '</ul>';
+}
+
 $hour = (int) strftime('%H');
 $welcome = ''; // Инициализируем переменную для приветстви
 
@@ -75,18 +92,9 @@ $year = strftime('%Y');
     <!-- Навигация -->
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
-    <ul>
-      <li><a href='<?= $leftMenu[0]['href'] ?>'><?= $leftMenu[0]['link'] ?></a>
-      </li>
-      <li><a href='<?= $leftMenu[1]['href'] ?>'><?= $leftMenu[1]['link'] ?></a>
-      </li>
-      <li><a href='<?= $leftMenu[2]['href'] ?>'><?= $leftMenu[2]['link'] ?></a>
-      </li>
-      <li><a href='<?= $leftMenu[3]['href'] ?>'><?= $leftMenu[3]['link'] ?></a>
-      </li>
-      <li><a href='<?= $leftMenu[4]['href'] ?>'><?= $leftMenu[4]['link'] ?></a>
-      </li>
-    </ul>
+    <?php
+    drawMenu($leftMenu, false);
+    ?>
     <!-- Меню -->
     <!-- Навигация -->
   </div>
